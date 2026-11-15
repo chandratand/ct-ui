@@ -1,0 +1,203 @@
+/*
+ * ct-ui tokens — framework-agnostic CSS variables.
+ * Source: chandratand design system artifact (Claude Design), with three changes:
+ *   1. Dark mode uses the `.dark` class (shadcn / next-themes standard).
+ *   2. Brand is a separate axis: `data-brand="saas"` on <html>. Mode and brand combine freely.
+ *   3. Radius scale is the artifact's (base 6px).
+ * Primitive ramps → semantic tokens (shadcn names). Brands override semantic tokens only.
+ */
+
+/* ───────────── Primitives ───────────── */
+:root {
+  /* Brand ramp, hue 247.3 — anchor #326897 = brand-600 */
+  --brand-50: oklch(0.970 0.012 247.3);  /* #eff6fd */
+  --brand-100: oklch(0.930 0.025 247.3); /* #dbeaf8 */
+  --brand-200: oklch(0.870 0.045 247.3); /* #bdd8f1 */
+  --brand-300: oklch(0.790 0.070 247.3); /* #97bfe6 */
+  --brand-400: oklch(0.720 0.090 247.3); /* #76aada — primary & ring in dark */
+  --brand-500: oklch(0.620 0.100 247.3); /* #518bbf — ring in light */
+  --brand-600: oklch(0.503 0.095 247.3); /* #326897 — anchor, primary in light */
+  --brand-700: oklch(0.440 0.085 247.3); /* #27567f */
+  --brand-800: oklch(0.370 0.072 247.3); /* #1c4264 */
+  --brand-900: oklch(0.300 0.058 247.3); /* #133049 */
+  --brand-950: oklch(0.220 0.045 247.3); /* #071c2e */
+
+  /* Neutral ramp, tinted to the brand hue */
+  --neutral-50: oklch(0.985 0.002 247.3);  /* #f9fafb */
+  --neutral-100: oklch(0.967 0.004 247.3); /* #f2f4f7 */
+  --neutral-200: oklch(0.922 0.006 247.3); /* #e2e6e9 */
+  --neutral-300: oklch(0.870 0.008 247.3); /* #d0d5d9 */
+  --neutral-400: oklch(0.708 0.012 247.3); /* #9ba2a8 */
+  --neutral-500: oklch(0.556 0.014 247.3); /* #6d747b — not for text on neutral-100 */
+  --neutral-600: oklch(0.439 0.014 247.3); /* #4c535a */
+  --neutral-700: oklch(0.371 0.013 247.3); /* #3b4147 */
+  --neutral-800: oklch(0.269 0.011 247.3); /* #22272b */
+  --neutral-900: oklch(0.205 0.009 247.3); /* #14181b */
+  --neutral-950: oklch(0.145 0.007 247.3); /* #080a0d */
+
+  /* Spacing (4px base, 8px rhythm) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius (base 6px) */
+  --radius: 0.375rem;
+  --radius-sm: 2px;   /* badges, checkboxes */
+  --radius-md: 4px;   /* inputs, buttons, menu items */
+  --radius-lg: 6px;   /* cards, dialogs, popovers */
+  --radius-xl: 8px;   /* large marketing panels only */
+
+  /* Sizing & density */
+  --control-sm: 32px; /* dense ERP screens */
+  --control-md: 36px; /* default */
+  --control-lg: 44px; /* touch / kiosk */
+  --row-comfortable: 40px;
+  --row-compact: 32px;
+  --icon-sm: 16px;
+  --icon-lg: 20px;
+
+  /* Elevation — borders first; shadows only for floating layers */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Fonts — the app loads the font files and may override these. Components only use the tokens. */
+  --font-sans: Geist, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ───────────── Semantic: chandratand, light ───────────── */
+:root {
+  --background: #ffffff;
+  --foreground: var(--neutral-950);
+  --card: #ffffff;
+  --card-foreground: var(--neutral-950);
+  --popover: #ffffff;
+  --popover-foreground: var(--neutral-950);
+  --primary: var(--brand-600);
+  --primary-foreground: #ffffff;
+  --primary-hover: var(--brand-700);
+  --primary-active: var(--brand-800);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-100);
+  --muted-foreground: oklch(0.52 0.014 247.3); /* 4.98:1 on muted */
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+  --border: var(--neutral-200);                /* decorative only */
+  --input: oklch(0.62 0.013 247.3);            /* form controls, 3.64:1 */
+  --ring: var(--brand-500);
+
+  --success: #0a7e3a;
+  --success-foreground: #ffffff;
+  --success-bg: oklch(0.970 0.022 150);
+  --success-border: oklch(0.870 0.060 150);
+  --warning: #a36000;
+  --warning-foreground: #ffffff;
+  --warning-bg: oklch(0.970 0.022 75);
+  --warning-border: oklch(0.870 0.060 75);
+  --destructive: #c2181d;
+  --destructive-foreground: #ffffff;
+  --destructive-bg: oklch(0.970 0.022 27);
+  --destructive-border: oklch(0.870 0.060 27);
+  --info: #0074a0;
+  --info-foreground: #ffffff;
+  --info-bg: oklch(0.970 0.022 230);
+  --info-border: oklch(0.870 0.060 230);
+
+  --chart-1: #3c85c4;
+  --chart-2: #1b9e8c;
+  --chart-3: #b37407;
+  --chart-4: #884183;
+  --chart-5: #a43427;
+
+  color-scheme: light;
+}
+
+/* ───────────── Semantic: chandratand, dark ───────────── */
+.dark {
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-50);
+  --card: var(--neutral-900);
+  --card-foreground: var(--neutral-50);
+  --popover: var(--neutral-900);
+  --popover-foreground: var(--neutral-50);
+  --primary: var(--brand-400);
+  --primary-foreground: var(--neutral-950);
+  --primary-hover: var(--brand-300);
+  --primary-active: var(--brand-200);
+  --secondary: var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--neutral-800);
+  --accent-foreground: var(--neutral-50);
+  --border: var(--neutral-800);
+  --input: oklch(0.52 0.012 247.3);            /* 3.62:1 */
+  --ring: var(--brand-400);
+
+  --success: #6fc483;
+  --success-foreground: var(--neutral-950);
+  --success-bg: oklch(0.250 0.035 150);
+  --success-border: oklch(0.400 0.060 150);
+  --warning: #dfa03c;
+  --warning-foreground: var(--neutral-950);
+  --warning-bg: oklch(0.250 0.035 75);
+  --warning-border: oklch(0.400 0.060 75);
+  --destructive: #ff796d;
+  --destructive-foreground: var(--neutral-950);
+  --destructive-bg: oklch(0.250 0.035 27);
+  --destructive-border: oklch(0.400 0.060 27);
+  --info: #5cbbe5;
+  --info-foreground: var(--neutral-950);
+  --info-bg: oklch(0.250 0.035 230);
+  --info-border: oklch(0.400 0.060 230);
+
+  --chart-1: #62abec;
+  --chart-2: #59ceba;
+  --chart-3: #d79628;
+  --chart-4: #ab61a5;
+  --chart-5: #ca5748;
+
+  color-scheme: dark;
+}
+
+/* ───────────── Brand: saas ─────────────
+ * Identical to chandratand for now. When the SaaS gets its own identity,
+ * override only brand-driven tokens here (primary*, ring, chart-1), for light and dark.
+ */
+[data-brand="saas"] {
+  --primary: var(--brand-600);
+  --primary-hover: var(--brand-700);
+  --primary-active: var(--brand-800);
+  --ring: var(--brand-500);
+}
+[data-brand="saas"].dark,
+[data-brand="saas"] .dark {
+  --primary: var(--brand-400);
+  --primary-hover: var(--brand-300);
+  --primary-active: var(--brand-200);
+  --ring: var(--brand-400);
+}
+
+/* ───────────── Reduced motion ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

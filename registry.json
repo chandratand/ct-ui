@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ct-ui",
+  "homepage": "https://github.com/chandratand/ct-ui",
+  "items": [
+    {
+      "name": "tokens",
+      "type": "registry:item",
+      "title": "ct-ui tokens",
+      "description": "CSS variables (primitives + semantic, light/dark, brand themes) and the Tailwind v4 bridge. Import both in globals.css after tailwindcss.",
+      "files": [
+        {
+          "path": "tokens/tokens.css",
+          "type": "registry:file",
+          "target": "styles/ct-ui/tokens.css"
+        },
+        {
+          "path": "tokens/theme.css",
+          "type": "registry:file",
+          "target": "styles/ct-ui/theme.css"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Primary, secondary, outline, ghost, destructive, link. Sizes sm/md/lg/icon. asChild for framework links.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "registry/ct-ui/ui/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input with 3:1 border, sizes sm/md/lg.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "registry/ct-ui/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Bordered surface, no shadow.",
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "registry/ct-ui/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Neutral, primary, outline and status variants (success, warning, destructive, info).",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "registry/ct-ui/ui/badge.tsx", "type": "registry:ui" }]
+    }
+  ]
+}
