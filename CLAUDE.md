@@ -16,6 +16,7 @@ Visual reference (made in Claude Design): https://claude.ai/artifact/BQwVS2i3Eiz
 | `registry/ct-ui/ui/*.tsx` | Component source — what the registry ships. |
 | `registry.json` | Registry manifest. The `tokens` item is generated — never edit it by hand. `npm run registry:build` → `public/r/*.json`. |
 | `app/` | Docs/demo site for this repo only (Next.js). Imports `tokens/*.css` directly. Not shipped. |
+| `components.json` | shadcn CLI config for this repo (same as the official `registry-template`). Enables `shadcn migrate`, `shadcn add` and `shadcn info` here. Not shipped. |
 | `lib/utils.ts` | `cn()`. Consumers get the shadcn one via `registryDependencies: ["utils"]`. |
 
 ## Hard rules
