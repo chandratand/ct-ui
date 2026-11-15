@@ -7,38 +7,32 @@ The chandratand design system: tokens and React components shared by the chandra
 
 ## Use in a project
 
-1. Point the shadcn CLI at the registry in your `components.json`:
+Requires a shadcn project (`components.json`, Tailwind CSS v4).
 
-   ```json
-   {
-     "registries": {
-       "@ct-ui": "https://YOUR_REGISTRY_HOST/r/{name}.json"
-     }
-   }
-   ```
-
-2. Add tokens and components:
+1. Add the theme. The shadcn CLI merges the tokens into your `globals.css` (`:root`, `.dark`, `@theme inline`, brand and reduced-motion rules):
 
    ```bash
-   npx shadcn add @ct-ui/tokens @ct-ui/button @ct-ui/input @ct-ui/card @ct-ui/badge
+   npx shadcn@latest add chandratand/ct-ui/tokens
    ```
 
-3. In `globals.css`:
+2. Add components:
 
-   ```css
-   @import "tailwindcss";
-   @import "./styles/ct-ui/tokens.css";
-   @import "./styles/ct-ui/theme.css";
+   ```bash
+   npx shadcn@latest add chandratand/ct-ui/button chandratand/ct-ui/input chandratand/ct-ui/card
    ```
 
-4. Theming is the app's job: put `.dark` on `<html>` for dark mode (e.g. `next-themes` with `attribute="class"`), and `data-brand="saas"` for the SaaS brand. Load your fonts and set `--font-sans` / `--font-mono` on `html`.
+   The registry is this public GitHub repo (root `registry.json`); no hosting or `components.json` entry is needed.
+
+3. Theming is the app's job: put `.dark` on `<html>` for dark mode (e.g. `next-themes` with `attribute="class"`), and `data-brand="saas"` for the SaaS brand. Load your fonts and set `--font-sans` / `--font-mono` on `html`.
+
+Never edit ct-ui components inside an app. Fix them here, then pull again with `npx shadcn add … --overwrite`.
 
 ## Develop
 
 ```bash
 npm install
 npm run dev              # demo at localhost:3000
-npm run registry:build   # writes public/r/*.json
+npm run registry:build   # tokens/*.css → registry.json tokens item, then public/r/*.json
 ```
 
 Rules for contributors (and Claude Code) are in `CLAUDE.md`.

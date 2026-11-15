@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "registry:build": "shadcn build"
+    "registry:build": "node scripts/tokens-to-registry.mjs && shadcn build"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -28,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "postcss": "^8.5.33",
     "shadcn": "^4.23.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
