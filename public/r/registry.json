@@ -27,7 +27,7 @@
       "title": "Button",
       "description": "Primary, secondary, outline, ghost, destructive, link. Sizes sm/md/lg/icon. asChild for framework links.",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "radix-ui",
         "class-variance-authority"
       ],
       "registryDependencies": [
@@ -79,7 +79,7 @@
       "title": "Badge",
       "description": "Neutral, primary, outline and status variants (success, warning, destructive, info).",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "radix-ui",
         "class-variance-authority"
       ],
       "registryDependencies": [
@@ -128,7 +128,7 @@
       "title": "Select",
       "description": "Radix select. Trigger like Input (sizes sm/md/lg), content like a dropdown menu.",
       "dependencies": [
-        "@radix-ui/react-select",
+        "radix-ui",
         "class-variance-authority",
         "lucide-react"
       ],
@@ -148,7 +148,7 @@
       "title": "Checkbox",
       "description": "Radix checkbox with indeterminate state. Sizes md (16px, 24px hit area) / lg (24px, 44px hit area).",
       "dependencies": [
-        "@radix-ui/react-checkbox",
+        "radix-ui",
         "class-variance-authority",
         "lucide-react"
       ],
@@ -168,7 +168,7 @@
       "title": "Switch",
       "description": "Radix switch for settings that apply immediately. Sizes sm/md/lg.",
       "dependencies": [
-        "@radix-ui/react-switch",
+        "radix-ui",
         "class-variance-authority"
       ],
       "registryDependencies": [

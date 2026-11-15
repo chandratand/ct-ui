@@ -4,7 +4,7 @@
   "title": "Badge",
   "description": "Neutral, primary, outline and status variants (success, warning, destructive, info).",
   "dependencies": [
-    "@radix-ui/react-slot",
+    "radix-ui",
     "class-variance-authority"
   ],
   "registryDependencies": [
@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "registry/ct-ui/ui/badge.tsx",
-      "content": "import * as React from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\n/** Status badges pair colour with text — never colour alone. */\nconst badgeVariants = cva(\n  \"inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border px-2 py-0.5 text-xs font-medium [&_svg]:size-3 [&_svg]:stroke-[1.5]\",\n  {\n    variants: {\n      variant: {\n        neutral: \"border-border bg-secondary text-secondary-foreground\",\n        primary: \"border-transparent bg-primary text-primary-foreground\",\n        outline: \"border-input text-foreground\",\n        success: \"border-success-border bg-success-bg text-success\",\n        warning: \"border-warning-border bg-warning-bg text-warning\",\n        destructive: \"border-destructive-border bg-destructive-bg text-destructive\",\n        info: \"border-info-border bg-info-bg text-info\",\n      },\n    },\n    defaultVariants: { variant: \"neutral\" },\n  },\n);\n\nexport interface BadgeProps\n  extends React.ComponentProps<\"span\">,\n    VariantProps<typeof badgeVariants> {\n  asChild?: boolean;\n}\n\nfunction Badge({ className, variant, asChild = false, ...props }: BadgeProps) {\n  const Comp = asChild ? Slot : \"span\";\n  return <Comp data-slot=\"badge\" className={cn(badgeVariants({ variant }), className)} {...props} />;\n}\n\nexport { Badge, badgeVariants };\n",
+      "content": "import * as React from \"react\";\nimport { Slot } from \"radix-ui\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\n/** Status badges pair colour with text — never colour alone. */\nconst badgeVariants = cva(\n  \"inline-flex w-fit shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border px-2 py-0.5 text-xs font-medium [&_svg]:size-3 [&_svg]:stroke-[1.5]\",\n  {\n    variants: {\n      variant: {\n        neutral: \"border-border bg-secondary text-secondary-foreground\",\n        primary: \"border-transparent bg-primary text-primary-foreground\",\n        outline: \"border-input text-foreground\",\n        success: \"border-success-border bg-success-bg text-success\",\n        warning: \"border-warning-border bg-warning-bg text-warning\",\n        destructive: \"border-destructive-border bg-destructive-bg text-destructive\",\n        info: \"border-info-border bg-info-bg text-info\",\n      },\n    },\n    defaultVariants: { variant: \"neutral\" },\n  },\n);\n\nexport interface BadgeProps\n  extends React.ComponentProps<\"span\">,\n    VariantProps<typeof badgeVariants> {\n  asChild?: boolean;\n}\n\nfunction Badge({ className, variant, asChild = false, ...props }: BadgeProps) {\n  const Comp = asChild ? Slot.Root : \"span\";\n  return <Comp data-slot=\"badge\" className={cn(badgeVariants({ variant }), className)} {...props} />;\n}\n\nexport { Badge, badgeVariants };\n",
       "type": "registry:ui"
     }
   ],
