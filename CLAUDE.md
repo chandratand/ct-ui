@@ -32,8 +32,8 @@ Visual reference (made in Claude Design): https://claude.ai/artifact/BQwVS2i3Eiz
 
 ## Status
 
-Done: tokens, Button, Input, Card, Badge.
-Next (see artifact READMEs for API): Label, Textarea, Select, Checkbox, Switch, Dialog, Dropdown Menu, Tabs, Table (comfortable/compact density), Toast (sonner), Tooltip.
+Done: tokens, Button, Input, Card, Badge, Label, Textarea, Select (Radix), Checkbox, Switch.
+Next (see artifact READMEs for API): Dialog, Dropdown Menu, Tabs, Table (comfortable/compact density), Toast (sonner), Tooltip.
 
 Open decisions: npm package for tokens (`@ct-ui/tokens`) — deferred until the SaaS starts; registry hosting (likely Vercel).
 

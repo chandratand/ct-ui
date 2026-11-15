@@ -10,7 +10,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/ct-ui/ui/card";
+import { Checkbox } from "@/registry/ct-ui/ui/checkbox";
 import { Input } from "@/registry/ct-ui/ui/input";
+import { Label } from "@/registry/ct-ui/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/ct-ui/ui/select";
+import { Switch } from "@/registry/ct-ui/ui/switch";
+import { Textarea } from "@/registry/ct-ui/ui/textarea";
 import { ThemeControls } from "./theme-controls";
 
 const brandSteps = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
@@ -78,6 +89,76 @@ export default function Home() {
           <Input placeholder="Medium — default" />
           <Input size="lg" placeholder="Large — touch / kiosk" />
           <Input placeholder="Invalid" aria-invalid defaultValue="not-an-email" />
+        </div>
+      </Section>
+
+      <Section title="Form controls">
+        <div className="grid max-w-md gap-6">
+          <div className="grid gap-2">
+            <Label htmlFor="demo-name">Company name</Label>
+            <Input id="demo-name" placeholder="PT Contoh Jaya" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="demo-notes">Notes (optional)</Label>
+            <Textarea id="demo-notes" placeholder="Anything the client should know" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="demo-terms">Payment terms</Label>
+            <Select defaultValue="net30">
+              <SelectTrigger id="demo-terms">
+                <SelectValue placeholder="Choose terms" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="due">Due on receipt</SelectItem>
+                <SelectItem value="net14">Net 14</SelectItem>
+                <SelectItem value="net30">Net 30</SelectItem>
+                <SelectItem value="net60" disabled>
+                  Net 60
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            {(["sm", "md", "lg"] as const).map((s) => (
+              <Select key={s}>
+                <SelectTrigger size={s} className="w-44" aria-label={`Currency (${s})`}>
+                  <SelectValue placeholder={`Currency · ${s}`} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="idr">IDR</SelectItem>
+                  <SelectItem value="usd">USD</SelectItem>
+                </SelectContent>
+              </Select>
+            ))}
+          </div>
+          <div className="grid gap-3">
+            <Label>
+              <Checkbox defaultChecked /> Send a copy to me
+            </Label>
+            <Label>
+              <Checkbox checked="indeterminate" /> Select all rows (partial)
+            </Label>
+            <Label>
+              <Checkbox size="lg" /> Large (touch)
+            </Label>
+            <Label>
+              <Checkbox disabled /> Disabled
+            </Label>
+          </div>
+          <div className="grid gap-3">
+            <Label>
+              <Switch size="sm" /> Compact rows
+            </Label>
+            <Label>
+              <Switch defaultChecked /> Auto-backup
+            </Label>
+            <Label>
+              <Switch size="lg" defaultChecked /> Email notifications
+            </Label>
+            <Label>
+              <Switch disabled /> Disabled
+            </Label>
+          </div>
         </div>
       </Section>
 
