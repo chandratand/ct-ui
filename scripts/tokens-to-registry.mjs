@@ -101,7 +101,7 @@ const item = {
   type: "registry:theme",
   title: "chandratand/ui tokens",
   description:
-    "chandratand theme: semantic colors (light/dark), brand themes via data-brand, sizes, radius, motion. Merged into globals.css by the shadcn CLI. Generated from tokens/*.css.",
+    "chandratand theme: semantic colors (light/dark), Brand overrides via data-brand, sizes, radius, motion. Merged into globals.css by the shadcn CLI. Generated from tokens/*.css.",
   cssVars: { theme: themeVars, light, dark },
   css,
 };
