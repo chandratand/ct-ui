@@ -10,10 +10,12 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
 
 | Path | What |
 | --- | --- |
-| `tokens/tokens.css` | **Source of truth** for all CSS variables: primitives, semantic (shadcn names), `.dark`, `[data-brand="saas"]`, reduced motion. Framework-agnostic. |
+| `tokens/tokens.css` | **Source of truth** for all CSS variables: primitives, semantic (shadcn names), `.dark`, `[data-brand]` overrides (none today), reduced motion. Framework-agnostic. |
 | `tokens/theme.css` | Tailwind v4 bridge (`@theme inline`, `dark` custom variant). |
 | `scripts/tokens-to-registry.mjs` | Generates the `tokens` item (`registry:theme`) in `registry.json` from `tokens/*.css`. Mapping documented at the top of the file. |
 | `registry/chandratand/ui/*.tsx` | Component source — what the registry ships. |
+| `CHANGELOG.md` | Hand-written, dated entries per change, naming affected items; **Breaking** marked. Tells Consumer apps when to re-pull with `--overwrite`. No version tags or changesets. |
+| `.github/workflows/ci.yml` | CI: lint, build, registry build (+ stale-output check) on every push and PR. |
 | `registry.json` | Registry manifest. The `tokens` item is generated: change `tokens/*.css` and run `pnpm registry:build`. |
 | `app/` | Docs/demo site for this repo only (Next.js). Imports `tokens/*.css` directly. Not shipped. |
 | `components.json` | shadcn CLI config for this repo (matches the official `registry-template`). Not shipped. |
@@ -24,7 +26,7 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
 1. **Components are framework-agnostic React.** Never import `next/*` (link, image, font, navigation) inside `registry/`. Accept `asChild` (`Slot.Root` from `radix-ui`) so apps can pass their own `<Link>`.
 2. **Semantic utilities only** in components (`bg-primary`, `text-muted-foreground`, `border-input`, `font-heading`). Hex values and `brand-*` ramps live in tokens and docs.
 3. **Token names follow shadcn exactly.** Additions follow the same pattern (`success`, `success-foreground`, `success-bg`, `success-border`).
-4. **Theming:** mode = `.dark` class; brand = `data-brand` attribute. Brands override semantic tokens only; components never know which brand is active. Tokens ship as `cssVars` + `css` on a `registry:theme`, so `shadcn add` merges them into the consumer's `globals.css`.
+4. **Theming:** mode = `.dark` class; brand = `data-brand` attribute. Brands override semantic tokens only (primary family, `ring`, `chart-1`); components never know which brand is active. chandratand is the default and only Brand; how to add one is in the design-system doc §3. Tokens ship as `cssVars` + `css` on a `registry:theme`, so `shadcn add` merges them into the consumer's `globals.css`.
 5. **Sizes:** interactive components take `size: "sm" | "md" | "lg"` → `h-control-sm|md|lg` (32/36/44px). Default `md`.
 6. **Radius:** `rounded-sm` 2px (badges, checkboxes), `rounded-md` 4px (inputs, buttons), `rounded-lg` 6px (cards, dialogs). Only avatars, switches and radio buttons go rounder.
 7. **Elevation:** borders first. Cards: `border`, no shadow. `shadow-sm` popovers/dropdowns/toasts; `shadow-lg` dialogs/sheets.
@@ -35,7 +37,7 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
     - Import it via `@/registry/...` (e.g. `import { Button } from "@/registry/chandratand/ui/button"`). The CLI rewrites `@/registry` to the consumer's alias on install; `@/components/...` and relative paths break.
     - List it in `registryDependencies` as `chandratand/ui/<name>`. A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
 12. **Fix chandratand/ui components here**, then re-pull into apps with `npx shadcn add … --overwrite`. Consuming apps never edit them.
-13. **Every component change is done when** it's in `registry.json`, shown on `app/page.tsx` and checked in light + dark, and `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass.
+13. **Every component change is done when** it's in `registry.json`, has its own docs page (for now its section on `app/page.tsx`) checked in light + dark, `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass, and a Changelog entry is written (design-system doc §7.5).
 
 ## Commands
 

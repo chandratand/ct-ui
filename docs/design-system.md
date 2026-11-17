@@ -63,9 +63,19 @@ Theming has two independent axes that combine freely:
 | Axis | Mechanism | Who sets it |
 | --- | --- | --- |
 | **Mode** | `.dark` class on `<html>` | The app (e.g. `next-themes` with `attribute="class"`) |
-| **Brand** | `data-brand="saas"` on `<html>` | The app |
+| **Brand** | `data-brand="<name>"` on `<html>` | The app |
 
-Brands override **semantic tokens only** (`--primary*`, `--ring`, `--chart-1`), for light and dark. Components never know which brand or mode is active.
+chandratand is the default Brand and the only one today: it is `:root` / `.dark`, with no `data-brand` attribute. Components never know which brand or mode is active.
+
+To add a Brand, add a block to `tokens/tokens.css` that overrides **only** the brand-driven semantic tokens: the primary family (`--primary`, `--primary-foreground`, `--primary-hover`, `--primary-active`), `--ring` and `--chart-1`. Define them for both modes, and check contrast in both (section 6):
+
+```css
+[data-brand="<name>"] { --primary: …; --primary-foreground: …; --primary-hover: …; --primary-active: …; --ring: …; --chart-1: …; }
+[data-brand="<name>"].dark,
+[data-brand="<name>"] .dark { /* the same tokens, dark values */ }
+```
+
+Everything else (neutrals, status colours, radius, sizes, motion) is shared by every Brand. Then run `pnpm registry:build` and add a Brand toggle to the demo so it can be checked. A Brand that would be identical to the default is not added.
 
 `tokens/theme.css` is the Tailwind v4 bridge that turns the variables into utilities. `scripts/tokens-to-registry.mjs` turns both files into the `tokens` registry item; never edit that item by hand.
 
@@ -244,7 +254,8 @@ When a new token is added, check its contrast in **light and dark** and note the
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ui/<name>`).
 4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
 5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
-6. Delete `components/`.
+6. Write a `CHANGELOG.md` entry (7.5).
+7. Delete `components/`.
 
 ### 7.2 New component (not in shadcn)
 
@@ -257,10 +268,20 @@ Same as 7.1 from step 2, starting from the closest existing chandratand/ui compo
 3. Add `--color-thing: var(--thing)` (or the right namespace) to `tokens/theme.css`.
 4. Check contrast in both modes; note the ratio in a comment.
 5. `pnpm registry:build`, then update this document.
+6. Write a `CHANGELOG.md` entry naming `tokens` (7.5).
 
 ### 7.4 Use chandratand/ui in an app
 
-See `README.md`. In short: `shadcn add chandratand/ui/tokens`, then components; the app sets `.dark` / `data-brand` and loads fonts; components are never edited in the app.
+See `README.md`. In short: `shadcn add chandratand/ui/tokens`, then components; the app sets `.dark` (and `data-brand` if a Brand other than the default exists) and loads fonts; components are never edited in the app.
+
+### 7.5 Done criteria for a change
+
+A change to a registry item (tokens or a component) is done when:
+
+- [ ] It is in `registry.json`.
+- [ ] It has its own docs page, checked in light and dark. Until per-item docs pages exist, that page is its section on `app/page.tsx`.
+- [ ] `pnpm lint`, `pnpm build` and `pnpm registry:build` pass (CI runs all three on every push and pull request, and fails if the committed registry output is stale).
+- [ ] A `CHANGELOG.md` entry is written: dated, naming the affected items, and marked **Breaking** when a Consumer app re-pulling with `--overwrite` would need to change its own code or markup.
 
 ## 8. Inventory
 
