@@ -100,6 +100,7 @@
   --border: var(--neutral-200);                /* decorative only */
   --input: oklch(0.62 0.013 247.3);            /* form controls, 3.64:1 */
   --ring: var(--brand-500);
+  --overlay: oklch(0 0 0 / 0.5);               /* dialog/sheet scrim */
 
   --success: #0a7e3a;
   --success-foreground: #ffffff;
@@ -148,6 +149,7 @@
   --border: var(--neutral-800);
   --input: oklch(0.52 0.012 247.3);            /* 3.62:1 */
   --ring: var(--brand-400);
+  --overlay: oklch(0 0 0 / 0.7);               /* dialog/sheet scrim */
 
   --success: #6fc483;
   --success-foreground: var(--neutral-950);
