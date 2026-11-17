@@ -9,7 +9,7 @@
   ],
   "registryDependencies": [
     "utils",
-    "chandratand/ct-ui/button"
+    "chandratand/ui/button"
   ],
   "files": [
     {

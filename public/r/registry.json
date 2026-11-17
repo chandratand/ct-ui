@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "ct-ui",
-  "homepage": "https://github.com/chandratand/ct-ui",
+  "homepage": "https://github.com/chandratand/ui",
   "items": [
     {
       "name": "tokens",
@@ -435,7 +435,7 @@
       ],
       "registryDependencies": [
         "utils",
-        "chandratand/ct-ui/button"
+        "chandratand/ui/button"
       ],
       "files": [
         {

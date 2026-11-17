@@ -2,7 +2,7 @@
 
 # ct-ui — chandratand design system
 
-Shared tokens + React components for every chandratand project (portfolio, SaaS). Distributed as a **shadcn registry** (copy-paste, not an npm package): consumers run `npx shadcn add chandratand/ct-ui/<name>` (GitHub registry, this public repo) and own the copied code.
+Shared tokens + React components for every chandratand project (portfolio, SaaS). Distributed as a **shadcn registry** (copy-paste, not an npm package): consumers run `npx shadcn add chandratand/ui/<name>` (GitHub registry, this public repo) and own the copied code.
 
 **`docs/design-system.md`** holds the design rules with their reasons, the workflows (§7: port from shadcn, new component, change a token) and the component inventory with what's next (§8). Read it before writing or porting a component or touching a token; update it in the same change when a rule, token or inventory status changes. The hard rules below are the short version.
 
@@ -33,7 +33,7 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
 10. **Radix:** import from the unified `radix-ui` package (`import { Dialog as DialogPrimitive } from "radix-ui"`), never `@radix-ui/react-*`. Registry `dependencies`: `"radix-ui"`.
 11. **One component using another** needs two things:
     - Import it via `@/registry/...` (e.g. `import { Button } from "@/registry/ct-ui/ui/button"`). The CLI rewrites `@/registry` to the consumer's alias on install; `@/components/...` and relative paths break.
-    - List it in `registryDependencies` as `chandratand/ct-ui/<name>`. A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
+    - List it in `registryDependencies` as `chandratand/ui/<name>`. A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
 12. **Fix ct-ui components here**, then re-pull into apps with `npx shadcn add … --overwrite`. Consuming apps never edit them.
 13. **Every component change is done when** it's in `registry.json`, shown on `app/page.tsx` and checked in light + dark, and `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass.
 

@@ -23,8 +23,8 @@ The rules of the chandratand design system: what it is, the values it is built o
 A **shadcn registry**: tokens and React components that every chandratand project (portfolio, SaaS) copies in with the shadcn CLI.
 
 ```bash
-npx shadcn@latest add chandratand/ct-ui/tokens      # theme, merged into globals.css
-npx shadcn@latest add chandratand/ct-ui/button      # a component, copied into the app
+npx shadcn@latest add chandratand/ui/tokens      # theme, merged into globals.css
+npx shadcn@latest add chandratand/ui/button      # a component, copied into the app
 ```
 
 | Layer | Role |
@@ -184,7 +184,7 @@ Always write durations as `duration-(--duration-*)` plus `ease-standard`. Under 
 3. **One function per part**, each with a `data-slot="<component>-<part>"` attribute (shadcn convention; lets parents style children).
 4. **Variants with `cva`**, exported alongside the component (`buttonVariants`) so apps can style a link like a button.
 5. **`className` is always last in `cn()`** so the app can override.
-6. **Using another ct-ui component**: import it from `@/registry/ct-ui/ui/<name>` and list `chandratand/ct-ui/<name>` in `registryDependencies`. A bare `"button"` would pull **shadcn's** Button. Bare `"utils"` is intended (shadcn's `cn`).
+6. **Using another ct-ui component**: import it from `@/registry/ct-ui/ui/<name>` and list `chandratand/ui/<name>` in `registryDependencies`. A bare `"button"` would pull **shadcn's** Button. Bare `"utils"` is intended (shadcn's `cn`).
 7. A short doc comment on the main export says **when** to use the component and when to use something else.
 
 ### 5.2 API conventions
@@ -241,7 +241,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Variant names per 5.2 (no `"default"`)
    - [ ] Other ct-ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
    - [ ] Doc comment: when to use it; inline comments only for a non-obvious why
-3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ct-ui/<name>`).
+3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ui/<name>`).
 4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
 5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
 6. Delete `components/`.
@@ -260,7 +260,7 @@ Same as 7.1 from step 2, starting from the closest existing ct-ui component as a
 
 ### 7.4 Use ct-ui in an app
 
-See `README.md`. In short: `shadcn add chandratand/ct-ui/tokens`, then components; the app sets `.dark` / `data-brand` and loads fonts; components are never edited in the app.
+See `README.md`. In short: `shadcn add chandratand/ui/tokens`, then components; the app sets `.dark` / `data-brand` and loads fonts; components are never edited in the app.
 
 ## 8. Inventory
 

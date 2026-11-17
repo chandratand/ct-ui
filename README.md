@@ -12,13 +12,13 @@ Requires a shadcn project (`components.json`, Tailwind CSS v4).
 1. Add the theme. The shadcn CLI merges the tokens into your `globals.css` (`:root`, `.dark`, `@theme inline`, brand and reduced-motion rules):
 
    ```bash
-   npx shadcn@latest add chandratand/ct-ui/tokens
+   npx shadcn@latest add chandratand/ui/tokens
    ```
 
 2. Add components:
 
    ```bash
-   npx shadcn@latest add chandratand/ct-ui/button chandratand/ct-ui/input chandratand/ct-ui/card
+   npx shadcn@latest add chandratand/ui/button chandratand/ui/input chandratand/ui/card
    ```
 
    The registry is this public GitHub repo (root `registry.json`); no hosting or `components.json` entry is needed.
