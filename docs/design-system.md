@@ -228,7 +228,7 @@ When a new token is added, check its contrast in **light and dark** and note the
 
 1. Pull the original into the staging folder (never committed):
    ```bash
-   npx shadcn@latest add <name> [<name> …]
+   pnpm dlx shadcn@latest add <name> [<name> …]
    ```
    It lands in `components/ui/`. It may also add npm dependencies; drop any you don't keep (e.g. the `cn` package).
 2. Rewrite it into `registry/ct-ui/ui/<name>.tsx`, going through this checklist:
@@ -243,7 +243,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Doc comment: when to use it
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ct-ui/<name>`).
 4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
-5. Run `npx eslint .`, `npm run build`, `npm run registry:build`.
+5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
 6. Delete `components/`.
 
 ### 7.2 New component (not in shadcn)
@@ -256,7 +256,7 @@ Same as 7.1 from step 2, starting from the closest existing ct-ui component as a
 2. Name it the shadcn way (`thing`, `thing-foreground`, `thing-bg`, `thing-border`).
 3. Add `--color-thing: var(--thing)` (or the right namespace) to `tokens/theme.css`.
 4. Check contrast in both modes; note the ratio in a comment.
-5. `npm run registry:build`, then update this document.
+5. `pnpm registry:build`, then update this document.
 
 ### 7.4 Use ct-ui in an app
 

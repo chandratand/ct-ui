@@ -30,9 +30,9 @@ Never edit ct-ui components inside an app. Fix them here, then pull again with `
 ## Develop
 
 ```bash
-npm install
-npm run dev              # demo at localhost:3000
-npm run registry:build   # tokens/*.css → registry.json tokens item, then public/r/*.json
+pnpm install
+pnpm dev              # demo at localhost:3000
+pnpm registry:build   # tokens/*.css → registry.json tokens item, then public/r/*.json
 ```
 
 Design rules and workflows: [`docs/design-system.md`](docs/design-system.md). Short rules for Claude Code: `CLAUDE.md`.

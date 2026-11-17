@@ -3,7 +3,7 @@
 // merges the tokens into the consumer's globals.css.
 //
 // Source of truth stays the CSS files. Do not edit the tokens item in
-// registry.json by hand — run `npm run registry:build`.
+// registry.json by hand — run `pnpm registry:build`.
 //
 // Mapping (verified against shadcn CLI behaviour):
 //   semantic vars (names defined in `.dark`) → cssVars.light / cssVars.dark,

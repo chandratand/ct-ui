@@ -16,7 +16,7 @@ Old visual reference (Claude Design): https://claude.ai/artifact/BQwVS2i3EizehDo
 | `tokens/theme.css` | Tailwind v4 bridge (`@theme inline`, `dark` custom variant). |
 | `scripts/tokens-to-registry.mjs` | Converts `tokens/*.css` into the `tokens` item (`registry:theme`) in `registry.json`. The mapping is documented at the top of the file. |
 | `registry/ct-ui/ui/*.tsx` | Component source — what the registry ships. |
-| `registry.json` | Registry manifest. The `tokens` item is generated — never edit it by hand. `npm run registry:build` → `public/r/*.json`. |
+| `registry.json` | Registry manifest. The `tokens` item is generated — never edit it by hand. `pnpm registry:build` → `public/r/*.json`. |
 | `app/` | Docs/demo site for this repo only (Next.js). Imports `tokens/*.css` directly. Not shipped. |
 | `components.json` | shadcn CLI config for this repo (same as the official `registry-template`). Enables `shadcn migrate`, `shadcn add` and `shadcn info` here. Not shipped. |
 | `lib/utils.ts` | `cn()`. Consumers get the shadcn one via `registryDependencies: ["utils"]`. |
@@ -37,7 +37,7 @@ Old visual reference (Claude Design): https://claude.ai/artifact/BQwVS2i3EizehDo
     - Import it via `@/registry/...` (e.g. Dialog: `import { Button } from "@/registry/ct-ui/ui/button"`). Never `@/components/...` or a relative path. The CLI rewrites `@/registry` to the consumer's alias on install.
     - List it in `registryDependencies` with the GitHub address `chandratand/ct-ui/<name>` (e.g. `chandratand/ct-ui/button`). A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
 12. **Never edit ct-ui components inside a consuming app.** Fix them here, then re-pull with `npx shadcn add … --overwrite`.
-13. Every new component: add it to `registry.json`, show it on `app/page.tsx` in light + dark, run `npx eslint .`, `npm run build` and `npm run registry:build`.
+13. Every new component: add it to `registry.json`, show it on `app/page.tsx` in light + dark, run `pnpm lint`, `pnpm build` and `pnpm registry:build`.
 
 ## Status
 
@@ -52,6 +52,8 @@ Open decisions (revisit when the SaaS starts):
 
 ## Commands
 
-- `npm run dev` — demo site
-- `npm run build` — type-check + build
-- `npm run registry:build` — `tokens/*.css` → `registry.json` tokens item, then `public/r/*.json`
+This repo uses pnpm (version pinned in `package.json` → `packageManager`). Consumer apps can use any package manager; install docs keep `npx shadcn add`.
+
+- `pnpm dev` — demo site
+- `pnpm build` — type-check + build
+- `pnpm registry:build` — `tokens/*.css` → `registry.json` tokens item, then `public/r/*.json`
