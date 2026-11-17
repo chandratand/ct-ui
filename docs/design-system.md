@@ -252,8 +252,8 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Other chandratand/ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
    - [ ] Doc comment: when to use it; inline comments only for a non-obvious why
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ui/<name>`).
-4. Show it on its docs page, for now its section on `app/page.tsx` (check light and dark with the Mode toggle).
-5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
+4. Give it a docs page: add `app/docs/_pages/<name>.tsx` (variants, sizes, states) and register it in `app/docs/_pages/index.ts`; the route `/docs/<name>` follows from `registry.json`. Check light and dark with the Mode toggle.
+5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`, `pnpm test:e2e`.
 6. Write a `CHANGELOG.md` entry (7.5).
 7. Delete `components/`.
 
@@ -279,8 +279,8 @@ See `README.md`. In short: `shadcn add chandratand/ui/tokens`, then components; 
 A change to a registry item (tokens or a component) is done when:
 
 - [ ] It is in `registry.json`.
-- [ ] It has its own docs page, checked in light and dark. Until per-item docs pages exist, that page is its section on `app/page.tsx`.
-- [ ] `pnpm lint`, `pnpm build` and `pnpm registry:build` pass (CI runs all three on every push and pull request, and fails if the committed registry output is stale).
+- [ ] It has its own docs page at `/docs/<name>`, checked in light and dark. Tokens have no item page; their docs are the sections on `app/page.tsx`. Components not yet migrated are on `tests/pending-migration.ts` and still shown on `app/page.tsx`; migrating one means removing it from that list.
+- [ ] `pnpm lint`, `pnpm build`, `pnpm registry:build` and `pnpm test:e2e` pass (CI runs all four on every push and pull request, and fails if the committed registry output is stale). `test:e2e` fails when a Component or Block has no docs page or its page has a WCAG 2.2 AA violation in either Mode.
 - [ ] A `CHANGELOG.md` entry is written: dated, naming the affected items, and marked **Breaking** when a Consumer app re-pulling with `--overwrite` would need to change its own code or markup.
 
 ## 8. Inventory

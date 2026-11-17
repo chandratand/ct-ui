@@ -18,6 +18,8 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
 | `.github/workflows/ci.yml` | CI: lint, build, registry build (+ stale-output check) on every push and PR. |
 | `registry.json` | Registry manifest. The `tokens` item is generated: change `tokens/*.css` and run `pnpm registry:build`. |
 | `app/` | Docs/demo site for this repo only (Next.js). Imports `tokens/*.css` directly. Not shipped. |
+| `app/docs/` | Per-item docs pages: `/docs/<name>`, one per Component and Block in `registry.json`. Page bodies in `app/docs/_pages/`, registered in its `index.ts`. |
+| `tests/` | Playwright suite over the docs pages: fails on an item without a page (unless on `pending-migration.ts`) and runs axe (WCAG 2.2 AA) in light and dark Mode. |
 | `components.json` | shadcn CLI config for this repo (matches the official `registry-template`). Not shipped. |
 | `components/ui/` | Staging for shadcn originals while porting. Never committed; delete after the port. |
 
@@ -37,13 +39,15 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
     - Import it via `@/registry/...` (e.g. `import { Button } from "@/registry/chandratand/ui/button"`). The CLI rewrites `@/registry` to the consumer's alias on install; `@/components/...` and relative paths break.
     - List it in `registryDependencies` as `chandratand/ui/<name>`. A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
 12. **Fix chandratand/ui components here**, then re-pull into apps with `npx shadcn add … --overwrite`. Consuming apps never edit them.
-13. **Every change to a registry item (tokens or a component) is done when** it's in `registry.json`, has its own docs page (for now its section on `app/page.tsx`) checked in light + dark, `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass, and a Changelog entry is written (design-system doc §7.5).
+13. **Every change to a registry item (tokens or a component) is done when** it's in `registry.json`, has its own docs page at `/docs/<name>` (tokens: their section on `app/page.tsx`) checked in light + dark, `pnpm lint`, `pnpm build`, `pnpm registry:build`, `pnpm test:e2e` all pass, and a Changelog entry is written (design-system doc §7.5).
 
 ## Commands
 
 pnpm (version pinned in `package.json` → `packageManager`). Consumer-facing docs keep `npx shadcn add`, since apps use any package manager.
 
 `pnpm registry:build` runs `tokens/*.css` → `registry.json` tokens item, then `shadcn build` → `public/r/*.json`.
+
+`pnpm test:e2e` runs the Playwright suite (starts `next dev` on port 3100, or reuses one; in CI it serves the build). First run locally: `pnpm exec playwright install chromium`. Tests assert roles, names, focus and axe results only, never class names or DOM structure.
 
 ## Open decisions (revisit when the SaaS starts)
 

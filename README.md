@@ -31,8 +31,9 @@ Never edit chandratand/ui components inside an app. Fix them here, then pull aga
 
 ```bash
 pnpm install
-pnpm dev              # demo at localhost:3000
+pnpm dev              # docs at localhost:3000, one page per item at /docs/<name>
 pnpm registry:build   # tokens/*.css → registry.json tokens item, then public/r/*.json
+pnpm test:e2e         # Playwright + axe over every docs page, light and dark
 ```
 
 Design rules and workflows: [`docs/design-system.md`](docs/design-system.md). Short rules for Claude Code: `CLAUDE.md`.
