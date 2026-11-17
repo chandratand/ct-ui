@@ -47,3 +47,17 @@ pnpm (version pinned in `package.json` → `packageManager`). Consumer-facing do
 
 - Copy-paste vs an npm package for components, and `@chandratand/ui-tokens` on npm.
 - Registry hosting. The GitHub registry needs none until then. Candidate `chandratand-ui.vercel.app`.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues on chandratand/ui, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five labels: needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: root `GLOSSARY.md` + `docs/adr/`. See `docs/agents/domain.md`.
