@@ -2,7 +2,7 @@
  * chandratand/ui tokens — framework-agnostic CSS variables.
  * Source: chandratand design system artifact (Claude Design), with three changes:
  *   1. Dark mode uses the `.dark` class (shadcn / next-themes standard).
- *   2. Brand is a separate axis: `data-brand="saas"` on <html>. Mode and brand combine freely.
+ *   2. Brand is a separate axis: `data-brand="<name>"` on <html>. Mode and brand combine freely.
  *   3. Radius scale is the artifact's (base 6px).
  * Primitive ramps → semantic tokens (shadcn names). Brands override semantic tokens only.
  */
@@ -175,24 +175,6 @@
   --chart-5: #ca5748;
 
   color-scheme: dark;
-}
-
-/* ───────────── Brand: saas ─────────────
- * Identical to chandratand for now. When the SaaS gets its own identity,
- * override only brand-driven tokens here (primary*, ring, chart-1), for light and dark.
- */
-[data-brand="saas"] {
-  --primary: var(--brand-600);
-  --primary-hover: var(--brand-700);
-  --primary-active: var(--brand-800);
-  --ring: var(--brand-500);
-}
-[data-brand="saas"].dark,
-[data-brand="saas"] .dark {
-  --primary: var(--brand-400);
-  --primary-hover: var(--brand-300);
-  --primary-active: var(--brand-200);
-  --ring: var(--brand-400);
 }
 
 /* ───────────── Reduced motion ───────────── */
