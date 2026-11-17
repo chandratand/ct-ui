@@ -22,7 +22,29 @@ import {
 } from "@/registry/ct-ui/ui/select";
 import { Switch } from "@/registry/ct-ui/ui/switch";
 import { Textarea } from "@/registry/ct-ui/ui/textarea";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/ct-ui/ui/alert";
+import { Avatar, AvatarFallback, AvatarGroup } from "@/registry/ct-ui/ui/avatar";
+import { RadioGroup, RadioGroupItem } from "@/registry/ct-ui/ui/radio-group";
+import { Separator } from "@/registry/ct-ui/ui/separator";
+import { Skeleton } from "@/registry/ct-ui/ui/skeleton";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/ct-ui/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ct-ui/ui/tabs";
+import { DemoOverlays } from "./demo-overlays";
 import { ThemeControls } from "./theme-controls";
+
+const invoices = [
+  { id: "INV-1042", client: "PT Contoh Jaya", status: "Paid", amount: "Rp 4.250.000" },
+  { id: "INV-1043", client: "CV Maju Bersama", status: "Due", amount: "Rp 1.800.000" },
+  { id: "INV-1044", client: "Toko Sinar", status: "Paid", amount: "Rp 920.000" },
+];
 
 const brandSteps = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
 const chartTokens = ["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"];
@@ -199,6 +221,152 @@ export default function Home() {
             <Button size="sm">Send reminder</Button>
           </CardFooter>
         </Card>
+      </Section>
+
+      <Section title="Overlays">
+        <DemoOverlays />
+      </Section>
+
+      <Section title="Alerts">
+        <div className="grid max-w-xl gap-3">
+          <Alert>
+            <Info aria-hidden />
+            <AlertTitle>New tax rules from 1 January</AlertTitle>
+            <AlertDescription>Invoices issued after this date use 12% VAT.</AlertDescription>
+          </Alert>
+          <Alert variant="info">
+            <Info aria-hidden />
+            <AlertTitle>Draft</AlertTitle>
+            <AlertDescription>This invoice has not been sent yet.</AlertDescription>
+          </Alert>
+          <Alert variant="success">
+            <CircleCheck aria-hidden />
+            <AlertTitle>Payment received</AlertTitle>
+          </Alert>
+          <Alert variant="warning">
+            <TriangleAlert aria-hidden />
+            <AlertTitle>Due in 3 days</AlertTitle>
+          </Alert>
+          <Alert variant="destructive">
+            <CircleAlert aria-hidden />
+            <AlertTitle>Could not send invoice</AlertTitle>
+            <AlertDescription>The client email address bounced. Check it and try again.</AlertDescription>
+          </Alert>
+        </div>
+      </Section>
+
+      <Section title="Tabs">
+        <Tabs defaultValue="overview">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="invoices">Invoices</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview" className="text-sm text-muted-foreground">
+            Segmented tabs (default).
+          </TabsContent>
+          <TabsContent value="invoices" className="text-sm text-muted-foreground">
+            12 open invoices.
+          </TabsContent>
+          <TabsContent value="settings" className="text-sm text-muted-foreground">
+            Workspace settings.
+          </TabsContent>
+        </Tabs>
+        <Tabs defaultValue="activity">
+          <TabsList variant="line">
+            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="payments">Payments</TabsTrigger>
+            <TabsTrigger value="notes">Notes</TabsTrigger>
+          </TabsList>
+          <TabsContent value="activity" className="text-sm text-muted-foreground">
+            Line tabs, for page sections.
+          </TabsContent>
+          <TabsContent value="payments" className="text-sm text-muted-foreground">
+            2 payments.
+          </TabsContent>
+          <TabsContent value="notes" className="text-sm text-muted-foreground">
+            No notes.
+          </TabsContent>
+        </Tabs>
+      </Section>
+
+      <Section title="Table">
+        {(["comfortable", "compact"] as const).map((density) => (
+          <div key={density} className="rounded-lg border border-border">
+            <Table density={density}>
+              <TableCaption className="mb-3">{density} density</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Invoice</TableHead>
+                  <TableHead>Client</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {invoices.map((inv) => (
+                  <TableRow key={inv.id}>
+                    <TableCell className="font-mono">{inv.id}</TableCell>
+                    <TableCell>{inv.client}</TableCell>
+                    <TableCell>
+                      <Badge variant={inv.status === "Paid" ? "success" : "warning"}>
+                        {inv.status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-right tabular-nums">{inv.amount}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        ))}
+      </Section>
+
+      <Section title="Radio group">
+        <RadioGroup defaultValue="transfer" className="max-w-md">
+          <Label>
+            <RadioGroupItem value="transfer" /> Bank transfer
+          </Label>
+          <Label>
+            <RadioGroupItem value="card" /> Card
+          </Label>
+          <Label>
+            <RadioGroupItem value="cash" size="lg" /> Cash (large, touch)
+          </Label>
+          <Label>
+            <RadioGroupItem value="crypto" disabled /> Crypto (disabled)
+          </Label>
+        </RadioGroup>
+      </Section>
+
+      <Section title="Avatar, separator, skeleton">
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+          <Separator orientation="vertical" className="h-8!" />
+          <AvatarGroup>
+            {["AB", "CD", "EF"].map((i) => (
+              <Avatar key={i}>
+                <AvatarFallback>{i}</AvatarFallback>
+              </Avatar>
+            ))}
+          </AvatarGroup>
+        </div>
+        <Separator />
+        <div className="flex max-w-sm items-center gap-3" aria-busy="true">
+          <Skeleton className="size-control-md rounded-full" />
+          <div className="grid flex-1 gap-2">
+            <Skeleton className="h-4 w-3/4" />
+            <Skeleton className="h-4 w-1/2" />
+          </div>
+        </div>
       </Section>
 
       <Section title="Chart palette">
