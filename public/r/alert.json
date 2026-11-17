@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Alert",
+  "description": "Inline status message: neutral, info, success, warning, destructive. Icon + colour.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ct-ui/ui/alert.tsx",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Inline status message on the page. Always include an icon (first child svg) so status\n * is not colour alone. `role=\"alert\"` only for errors that appear after an action;\n * static notices default to `role=\"status\"`.\n */\nconst alertVariants = cva(\n  [\n    \"relative grid w-full grid-cols-[0_1fr] items-start gap-y-1 rounded-lg border px-4 py-3 text-sm\",\n    \"has-[>svg]:grid-cols-[var(--icon-sm)_1fr] has-[>svg]:gap-x-3\",\n    \"[&>svg]:size-icon-sm [&>svg]:translate-y-0.5 [&>svg]:stroke-[1.5] [&>svg]:text-current\",\n  ],\n  {\n    variants: {\n      variant: {\n        neutral: \"border-border bg-card text-card-foreground\",\n        info: \"border-info-border bg-info-bg text-info\",\n        success: \"border-success-border bg-success-bg text-success\",\n        warning: \"border-warning-border bg-warning-bg text-warning\",\n        destructive: \"border-destructive-border bg-destructive-bg text-destructive\",\n      },\n    },\n    defaultVariants: { variant: \"neutral\" },\n  },\n);\n\nfunction Alert({\n  className,\n  variant,\n  role,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>) {\n  return (\n    <div\n      data-slot=\"alert\"\n      role={role ?? (variant === \"destructive\" ? \"alert\" : \"status\")}\n      className={cn(alertVariants({ variant }), className)}\n      {...props}\n    />\n  );\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-title\"\n      className={cn(\"col-start-2 font-medium leading-snug\", className)}\n      {...props}\n    />\n  );\n}\n\n/** Body text uses foreground (not the status colour) for 4.5:1 on the tinted background. */\nfunction AlertDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-description\"\n      className={cn(\"col-start-2 grid gap-1 text-sm text-foreground [&_p]:leading-relaxed\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Alert, AlertDescription, AlertTitle, alertVariants };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
