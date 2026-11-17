@@ -42,3 +42,8 @@ next-env.d.ts
 
 # shadcn staging folder for porting (see docs/design-system.md §7.1)
 /components/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
