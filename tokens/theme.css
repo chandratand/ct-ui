@@ -1,5 +1,5 @@
 /*
- * ct-ui Tailwind v4 bridge. Import after "tailwindcss" and tokens.css.
+ * chandratand/ui Tailwind v4 bridge. Import after "tailwindcss" and tokens.css.
  * Maps CSS variables to Tailwind utilities (bg-primary, h-control-md, font-heading, …).
  * Radius, shadow and font names match Tailwind's own, so tokens.css overrides them directly.
  */

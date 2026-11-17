@@ -99,7 +99,7 @@ css["@layer base"] = {
 const item = {
   name: "tokens",
   type: "registry:theme",
-  title: "ct-ui tokens",
+  title: "chandratand/ui tokens",
   description:
     "chandratand theme: semantic colors (light/dark), brand themes via data-brand, sizes, radius, motion. Merged into globals.css by the shadcn CLI. Generated from tokens/*.css.",
   cssVars: { theme: themeVars, light, dark },

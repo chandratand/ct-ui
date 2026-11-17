@@ -4,7 +4,7 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { Monitor, Moon, Sun } from "lucide-react";
 
-import { Button } from "@/registry/ct-ui/ui/button";
+import { Button } from "@/registry/chandratand/ui/button";
 
 /** Demo-only controls: mode (light/dark/system) and brand (chandratand/saas). */
 export function ThemeControls() {

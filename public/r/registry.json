@@ -1,12 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "ct-ui",
+  "name": "ui",
   "homepage": "https://github.com/chandratand/ui",
   "items": [
     {
       "name": "tokens",
       "type": "registry:theme",
-      "title": "ct-ui tokens",
+      "title": "chandratand/ui tokens",
       "description": "chandratand theme: semantic colors (light/dark), brand themes via data-brand, sizes, radius, motion. Merged into globals.css by the shadcn CLI. Generated from tokens/*.css.",
       "cssVars": {
         "theme": {
@@ -258,7 +258,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/button.tsx",
+          "path": "registry/chandratand/ui/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -276,7 +276,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/input.tsx",
+          "path": "registry/chandratand/ui/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -291,7 +291,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/card.tsx",
+          "path": "registry/chandratand/ui/card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -310,7 +310,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/badge.tsx",
+          "path": "registry/chandratand/ui/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -325,7 +325,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/label.tsx",
+          "path": "registry/chandratand/ui/label.tsx",
           "type": "registry:ui"
         }
       ]
@@ -340,7 +340,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/textarea.tsx",
+          "path": "registry/chandratand/ui/textarea.tsx",
           "type": "registry:ui"
         }
       ]
@@ -360,7 +360,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/select.tsx",
+          "path": "registry/chandratand/ui/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -380,7 +380,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/checkbox.tsx",
+          "path": "registry/chandratand/ui/checkbox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -399,7 +399,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/switch.tsx",
+          "path": "registry/chandratand/ui/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -419,7 +419,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/dialog.tsx",
+          "path": "registry/chandratand/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -428,7 +428,7 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "Confirmation for consequential actions. No close button; Action/Cancel use ct-ui Button.",
+      "description": "Confirmation for consequential actions. No close button; Action/Cancel use chandratand/ui Button.",
       "dependencies": [
         "radix-ui",
         "tw-animate-css"
@@ -439,7 +439,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/alert-dialog.tsx",
+          "path": "registry/chandratand/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -459,7 +459,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/dropdown-menu.tsx",
+          "path": "registry/chandratand/ui/dropdown-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -478,7 +478,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/tooltip.tsx",
+          "path": "registry/chandratand/ui/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -487,7 +487,7 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "sonner Toaster styled with ct-ui tokens; status icons per type. No next-themes dependency.",
+      "description": "sonner Toaster styled with chandratand/ui tokens; status icons per type. No next-themes dependency.",
       "dependencies": [
         "sonner",
         "lucide-react"
@@ -497,7 +497,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/sonner.tsx",
+          "path": "registry/chandratand/ui/sonner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -516,7 +516,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/popover.tsx",
+          "path": "registry/chandratand/ui/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -535,7 +535,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/tabs.tsx",
+          "path": "registry/chandratand/ui/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -550,7 +550,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/table.tsx",
+          "path": "registry/chandratand/ui/table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -568,7 +568,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/alert.tsx",
+          "path": "registry/chandratand/ui/alert.tsx",
           "type": "registry:ui"
         }
       ]
@@ -587,7 +587,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/radio-group.tsx",
+          "path": "registry/chandratand/ui/radio-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -605,7 +605,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/separator.tsx",
+          "path": "registry/chandratand/ui/separator.tsx",
           "type": "registry:ui"
         }
       ]
@@ -620,7 +620,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/skeleton.tsx",
+          "path": "registry/chandratand/ui/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -639,7 +639,7 @@
       ],
       "files": [
         {
-          "path": "registry/ct-ui/ui/avatar.tsx",
+          "path": "registry/chandratand/ui/avatar.tsx",
           "type": "registry:ui"
         }
       ]

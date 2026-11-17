@@ -12,8 +12,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/ct-ui/ui/alert-dialog";
-import { Button } from "@/registry/ct-ui/ui/button";
+} from "@/registry/chandratand/ui/alert-dialog";
+import { Button } from "@/registry/chandratand/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/ct-ui/ui/dialog";
+} from "@/registry/chandratand/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -33,9 +33,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/registry/ct-ui/ui/dropdown-menu";
-import { Input } from "@/registry/ct-ui/ui/input";
-import { Label } from "@/registry/ct-ui/ui/label";
+} from "@/registry/chandratand/ui/dropdown-menu";
+import { Input } from "@/registry/chandratand/ui/input";
+import { Label } from "@/registry/chandratand/ui/label";
 import {
   Popover,
   PopoverContent,
@@ -43,9 +43,9 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/ct-ui/ui/popover";
-import { toast } from "@/registry/ct-ui/ui/sonner";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/ct-ui/ui/tooltip";
+} from "@/registry/chandratand/ui/popover";
+import { toast } from "@/registry/chandratand/ui/sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/chandratand/ui/tooltip";
 
 export function DemoOverlays() {
   return (

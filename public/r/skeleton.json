@@ -8,7 +8,7 @@
   ],
   "files": [
     {
-      "path": "registry/ct-ui/ui/skeleton.tsx",
+      "path": "registry/chandratand/ui/skeleton.tsx",
       "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n/**\n * Loading placeholder shaped like the content it replaces. Hidden from screen readers;\n * mark the loading region with `aria-busy` instead. Pulse stops under reduced motion.\n */\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden\n      className={cn(\"animate-pulse rounded-md bg-muted motion-reduce:animate-none\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n",
       "type": "registry:ui"
     }

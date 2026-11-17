@@ -1,4 +1,4 @@
-# ct-ui
+# chandratand/ui
 
 The chandratand design system: tokens and React components shared by the chandratand portfolio and SaaS. Built on shadcn/ui conventions, Tailwind CSS v4 and Radix.
 
@@ -25,7 +25,7 @@ Requires a shadcn project (`components.json`, Tailwind CSS v4).
 
 3. Theming is the app's job: put `.dark` on `<html>` for dark mode (e.g. `next-themes` with `attribute="class"`), and `data-brand="saas"` for the SaaS brand. Load your fonts and set `--font-sans` / `--font-mono` on `html`.
 
-Never edit ct-ui components inside an app. Fix them here, then pull again with `npx shadcn add … --overwrite`.
+Never edit chandratand/ui components inside an app. Fix them here, then pull again with `npx shadcn add … --overwrite`.
 
 ## Develop
 

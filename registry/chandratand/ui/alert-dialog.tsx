@@ -4,7 +4,7 @@ import * as React from "react";
 import { AlertDialog as AlertDialogPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/utils";
-import { Button, type ButtonProps } from "@/registry/ct-ui/ui/button";
+import { Button, type ButtonProps } from "@/registry/chandratand/ui/button";
 
 /**
  * Confirmation for a consequential action ("Delete project?").

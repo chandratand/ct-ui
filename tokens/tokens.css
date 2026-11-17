@@ -1,5 +1,5 @@
 /*
- * ct-ui tokens — framework-agnostic CSS variables.
+ * chandratand/ui tokens — framework-agnostic CSS variables.
  * Source: chandratand design system artifact (Claude Design), with three changes:
  *   1. Dark mode uses the `.dark` class (shadcn / next-themes standard).
  *   2. Brand is a separate axis: `data-brand="saas"` on <html>. Mode and brand combine freely.

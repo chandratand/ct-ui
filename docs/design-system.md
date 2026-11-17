@@ -1,4 +1,4 @@
-# ct-ui design system
+# chandratand/ui design system
 
 The rules of the chandratand design system: what it is, the values it is built on, and how components are made. **This repo is the source of truth.** Anything else (Claude Design artifacts, Figma, slides) is generated from it, never the other way round.
 
@@ -7,7 +7,7 @@ The rules of the chandratand design system: what it is, the values it is built o
 
 ## Contents
 
-1. [What ct-ui is](#1-what-ct-ui-is)
+1. [What chandratand/ui is](#1-what-chandratandui-is)
 2. [Principles](#2-principles)
 3. [Architecture: three layers, two theme axes](#3-architecture-three-layers-two-theme-axes)
 4. [Foundations](#4-foundations)
@@ -18,7 +18,7 @@ The rules of the chandratand design system: what it is, the values it is built o
 
 ---
 
-## 1. What ct-ui is
+## 1. What chandratand/ui is
 
 A **shadcn registry**: tokens and React components that every chandratand project (portfolio, SaaS) copies in with the shadcn CLI.
 
@@ -30,8 +30,8 @@ npx shadcn@latest add chandratand/ui/button      # a component, copied into the 
 | Layer | Role |
 | --- | --- |
 | **shadcn/ui** | Raw material. A well-built, accessible starting point for most components. |
-| **ct-ui (this repo)** | shadcn adjusted to our rules: tokens, sizes, API, accessibility. The only place components are edited. |
-| **Apps** | Consumers. They install from ct-ui and never edit the copied components. A fix happens here, then the app pulls again with `--overwrite`. |
+| **chandratand/ui (this repo)** | shadcn adjusted to our rules: tokens, sizes, API, accessibility. The only place components are edited. |
+| **Apps** | Consumers. They install from chandratand/ui and never edit the copied components. A fix happens here, then the app pulls again with `--overwrite`. |
 
 Not every component has to start from shadcn. A component shadcn doesn't have is written from scratch, following the same rules.
 
@@ -184,7 +184,7 @@ Always write durations as `duration-(--duration-*)` plus `ease-standard`. Under 
 3. **One function per part**, each with a `data-slot="<component>-<part>"` attribute (shadcn convention; lets parents style children).
 4. **Variants with `cva`**, exported alongside the component (`buttonVariants`) so apps can style a link like a button.
 5. **`className` is always last in `cn()`** so the app can override.
-6. **Using another ct-ui component**: import it from `@/registry/ct-ui/ui/<name>` and list `chandratand/ui/<name>` in `registryDependencies`. A bare `"button"` would pull **shadcn's** Button. Bare `"utils"` is intended (shadcn's `cn`).
+6. **Using another chandratand/ui component**: import it from `@/registry/chandratand/ui/<name>` and list `chandratand/ui/<name>` in `registryDependencies`. A bare `"button"` would pull **shadcn's** Button. Bare `"utils"` is intended (shadcn's `cn`).
 7. A short doc comment on the main export says **when** to use the component and when to use something else.
 
 ### 5.2 API conventions
@@ -231,7 +231,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    pnpm dlx shadcn@latest add <name> [<name> …]
    ```
    It lands in `components/ui/`. It may also add npm dependencies; drop any you don't keep (e.g. the `cn` package).
-2. Rewrite it into `registry/ct-ui/ui/<name>.tsx`, going through this checklist:
+2. Rewrite it into `registry/chandratand/ui/<name>.tsx`, going through this checklist:
    - [ ] `cn` from `@/lib/utils`, Radix from `radix-ui`, icons from lucide with `aria-hidden`
    - [ ] No raw colours (`bg-black/50` → `bg-overlay`, `bg-destructive/10` → `bg-destructive-bg`, …)
    - [ ] Radius per 4.4, elevation per 4.6
@@ -239,7 +239,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Focus ring and states per 5.3
    - [ ] Durations `duration-(--duration-*) ease-standard`
    - [ ] Variant names per 5.2 (no `"default"`)
-   - [ ] Other ct-ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
+   - [ ] Other chandratand/ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
    - [ ] Doc comment: when to use it; inline comments only for a non-obvious why
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ui/<name>`).
 4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
@@ -248,7 +248,7 @@ When a new token is added, check its contrast in **light and dark** and note the
 
 ### 7.2 New component (not in shadcn)
 
-Same as 7.1 from step 2, starting from the closest existing ct-ui component as a pattern.
+Same as 7.1 from step 2, starting from the closest existing chandratand/ui component as a pattern.
 
 ### 7.3 Change or add a token
 
@@ -258,7 +258,7 @@ Same as 7.1 from step 2, starting from the closest existing ct-ui component as a
 4. Check contrast in both modes; note the ratio in a comment.
 5. `pnpm registry:build`, then update this document.
 
-### 7.4 Use ct-ui in an app
+### 7.4 Use chandratand/ui in an app
 
 See `README.md`. In short: `shadcn add chandratand/ui/tokens`, then components; the app sets `.dark` / `data-brand` and loads fonts; components are never edited in the app.
 

@@ -1,7 +1,7 @@
 import { ArrowRight, CircleAlert, CircleCheck, Info, Plus, TriangleAlert } from "lucide-react";
 
-import { Badge } from "@/registry/ct-ui/ui/badge";
-import { Button } from "@/registry/ct-ui/ui/button";
+import { Badge } from "@/registry/chandratand/ui/badge";
+import { Button } from "@/registry/chandratand/ui/button";
 import {
   Card,
   CardContent,
@@ -9,24 +9,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/ct-ui/ui/card";
-import { Checkbox } from "@/registry/ct-ui/ui/checkbox";
-import { Input } from "@/registry/ct-ui/ui/input";
-import { Label } from "@/registry/ct-ui/ui/label";
+} from "@/registry/chandratand/ui/card";
+import { Checkbox } from "@/registry/chandratand/ui/checkbox";
+import { Input } from "@/registry/chandratand/ui/input";
+import { Label } from "@/registry/chandratand/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/ct-ui/ui/select";
-import { Switch } from "@/registry/ct-ui/ui/switch";
-import { Textarea } from "@/registry/ct-ui/ui/textarea";
-import { Alert, AlertDescription, AlertTitle } from "@/registry/ct-ui/ui/alert";
-import { Avatar, AvatarFallback, AvatarGroup } from "@/registry/ct-ui/ui/avatar";
-import { RadioGroup, RadioGroupItem } from "@/registry/ct-ui/ui/radio-group";
-import { Separator } from "@/registry/ct-ui/ui/separator";
-import { Skeleton } from "@/registry/ct-ui/ui/skeleton";
+} from "@/registry/chandratand/ui/select";
+import { Switch } from "@/registry/chandratand/ui/switch";
+import { Textarea } from "@/registry/chandratand/ui/textarea";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/chandratand/ui/alert";
+import { Avatar, AvatarFallback, AvatarGroup } from "@/registry/chandratand/ui/avatar";
+import { RadioGroup, RadioGroupItem } from "@/registry/chandratand/ui/radio-group";
+import { Separator } from "@/registry/chandratand/ui/separator";
+import { Skeleton } from "@/registry/chandratand/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -35,8 +35,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/ct-ui/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ct-ui/ui/tabs";
+} from "@/registry/chandratand/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/chandratand/ui/tabs";
 import { DemoOverlays } from "./demo-overlays";
 import { ThemeControls } from "./theme-controls";
 
@@ -62,7 +62,7 @@ export default function Home() {
   return (
     <main className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-12">
       <header className="flex flex-col gap-4 border-b border-border pb-8">
-        <p className="font-mono text-sm text-muted-foreground">ct-ui · v0.1</p>
+        <p className="font-mono text-sm text-muted-foreground">chandratand/ui · v0.1</p>
         <h1 className="text-4xl font-semibold md:text-5xl">chandratand design system</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           Tokens and components shared by the portfolio and the SaaS. Calm, precise, trustworthy.

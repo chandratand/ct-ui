@@ -7,7 +7,7 @@ import { Toaster as Sonner, toast, type ToasterProps } from "sonner";
 /**
  * Toasts (sonner). Mount <Toaster /> once near the root, then call `toast("Saved")`,
  * `toast.success(…)`, `toast.error(…)` anywhere. Status = icon + colour, never colour alone.
- * Styled entirely with ct-ui tokens, so it follows `.dark` and `data-brand` with no theme prop.
+ * Styled entirely with chandratand/ui tokens, so it follows `.dark` and `data-brand` with no theme prop.
  */
 function Toaster({ toastOptions, ...props }: ToasterProps) {
   return (
