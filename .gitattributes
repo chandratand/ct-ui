@@ -1,0 +1,2 @@
+# Keep LF everywhere so registry output (public/r/*.json) never embeds CRLF.
+* text=auto eol=lf
