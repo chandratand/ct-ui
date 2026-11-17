@@ -1,4 +1,5 @@
-import { ArrowRight, CircleAlert, CircleCheck, Info, Plus, TriangleAlert } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CircleAlert, CircleCheck, Info, TriangleAlert } from "lucide-react";
 
 import { Badge } from "@/registry/chandratand/ui/badge";
 import { Button } from "@/registry/chandratand/ui/button";
@@ -38,6 +39,7 @@ import {
 } from "@/registry/chandratand/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/chandratand/ui/tabs";
 import { DemoOverlays } from "./demo-overlays";
+import { publishedDocsItems } from "./docs/manifest";
 import { ThemeControls } from "./theme-controls";
 
 const invoices = [
@@ -81,28 +83,18 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Buttons">
-        <div className="flex flex-wrap items-center gap-3">
-          <Button>Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="destructive">Delete</Button>
-          <Button variant="link">Link</Button>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Button size="sm">
-            <Plus aria-hidden /> Small
-          </Button>
-          <Button size="md">
-            Medium <ArrowRight aria-hidden />
-          </Button>
-          <Button size="lg">Large (touch)</Button>
-          <Button size="icon" variant="outline" aria-label="Add">
-            <Plus aria-hidden />
-          </Button>
-          <Button disabled>Disabled</Button>
-        </div>
+      <Section title="Docs pages">
+        <ul className="flex flex-wrap gap-3">
+          {publishedDocsItems.map((item) => (
+            <li key={item.name}>
+              <Button asChild variant="outline">
+                <Link href={`/docs/${item.name}`}>
+                  {item.title} <ArrowRight aria-hidden />
+                </Link>
+              </Button>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section title="Inputs">
