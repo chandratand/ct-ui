@@ -35,4 +35,4 @@ npm run dev              # demo at localhost:3000
 npm run registry:build   # tokens/*.css → registry.json tokens item, then public/r/*.json
 ```
 
-Rules for contributors (and Claude Code) are in `CLAUDE.md`.
+Design rules and workflows: [`docs/design-system.md`](docs/design-system.md). Short rules for Claude Code: `CLAUDE.md`.

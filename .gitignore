@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# shadcn staging folder for porting (see docs/design-system.md §7.1)
+/components/

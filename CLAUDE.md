@@ -4,7 +4,9 @@
 
 Shared tokens + React components for every chandratand project (portfolio, SaaS). Distributed as a **shadcn registry** (copy-paste, not an npm package): consumers run `npx shadcn add chandratand/ct-ui/<name>` (GitHub registry, this public repo) and own the copied code.
 
-Visual reference (made in Claude Design): https://claude.ai/artifact/BQwVS2i3EizehDojo1RqeM — component READMEs, API notes and previews live there under `project/`. This repo is now the source of truth; the artifact is reference only.
+**Design rules, with the reasons behind them: `docs/design-system.md`.** Read it before porting or writing a component, and update it when a rule or token changes. The hard rules below are the short version.
+
+Old visual reference (Claude Design): https://claude.ai/artifact/BQwVS2i3EizehDojo1RqeM. Superseded by this repo; to be replaced by an artifact generated from it.
 
 ## Layout
 
@@ -26,7 +28,7 @@ Visual reference (made in Claude Design): https://claude.ai/artifact/BQwVS2i3Eiz
 3. **Token names follow shadcn exactly.** Additions follow the same pattern (`success`, `success-foreground`, `success-bg`, `success-border`).
 4. **Theming:** mode = `.dark` class; brand = `data-brand` attribute. Brands override semantic tokens only. Components never know which brand is active. Tokens ship the official shadcn way (`cssVars` + `css` on a `registry:theme`), so `shadcn add` merges them into the consumer's `globals.css`. Change tokens in `tokens/*.css` only.
 5. **Sizes:** interactive components take `size: "sm" | "md" | "lg"` → `h-control-sm|md|lg` (32/36/44px). Default `md`.
-6. **Radius:** `rounded-sm` 2px (badges, checkboxes), `rounded-md` 4px (inputs, buttons), `rounded-lg` 6px (cards, dialogs). Nothing rounder except avatars/switches.
+6. **Radius:** `rounded-sm` 2px (badges, checkboxes), `rounded-md` 4px (inputs, buttons), `rounded-lg` 6px (cards, dialogs). Nothing rounder except avatars, switches and radio buttons.
 7. **Elevation:** borders first. Cards: `border`, no shadow. `shadow-sm` popovers/dropdowns/toasts; `shadow-lg` dialogs/sheets.
 8. **Accessibility (WCAG 2.2 AA):** text ≥ 4.5:1; form borders, focus rings, meaningful icons ≥ 3:1. Focus = `focus-visible:ring-2 ring-ring ring-offset-2`. Status always pairs color with icon or text. Motion uses `duration-(--duration-*)`, which collapses to 0 under reduced motion.
 9. **Icons:** lucide-react, stroke 1.5, `size-icon-sm` (16) / `size-icon-lg` (20). Exception: the Checkbox mark uses stroke 2 (legibility at 14px).
@@ -39,8 +41,10 @@ Visual reference (made in Claude Design): https://claude.ai/artifact/BQwVS2i3Eiz
 
 ## Status
 
-Done: tokens (`registry:theme`), Button, Input, Card, Badge, Label, Textarea, Select, Checkbox, Switch. Radix on the unified `radix-ui` package.
-Next (see artifact READMEs for API): Dialog, Dropdown Menu, Tooltip, Toast (sonner); then Tabs, Table (comfortable/compact density).
+Done: tokens (`registry:theme`), Button, Input, Card, Badge, Label, Textarea, Select, Checkbox, Switch, Dialog, Alert Dialog, Dropdown Menu, Tooltip, Toast (sonner), Popover, Tabs, Table, Alert, Radio Group, Separator, Skeleton, Avatar. Radix on the unified `radix-ui` package.
+Next (priority 2): Sheet, Sidebar, Breadcrumb, Pagination, Command/Combobox, Field, Progress, Spinner, Empty, Accordion, Scroll Area, Date Picker. Then a `registry:style` item (`extends: "none"`) that installs everything in one command.
+
+Porting from shadcn: follow the checklist in `docs/design-system.md` §7.1 (pull into `components/ui/` staging, never commit it, rewrite into `registry/ct-ui/ui/`). Overlay enter/exit animations use `tw-animate-css` classes with `duration-(--duration-*)` (consumer projects from `shadcn init` already import it). Scrim colour = `bg-overlay` token.
 
 Open decisions (revisit when the SaaS starts):
 - Copy-paste vs an npm package for components, and `@ct-ui/tokens` on npm.
