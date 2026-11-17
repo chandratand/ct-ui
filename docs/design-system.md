@@ -240,7 +240,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Durations `duration-(--duration-*) ease-standard`
    - [ ] Variant names per 5.2 (no `"default"`)
    - [ ] Other ct-ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
-   - [ ] Doc comment: when to use it
+   - [ ] Doc comment: when to use it; inline comments only for a non-obvious why
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ct-ui/<name>`).
 4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
 5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
