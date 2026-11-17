@@ -35,5 +35,6 @@
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   },
-  "description": "chandratand design system — tokens and components"
+  "description": "chandratand design system — tokens and components",
+  "packageManager": "pnpm@11.5.0"
 }
