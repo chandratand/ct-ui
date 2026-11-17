@@ -9,7 +9,7 @@ The chandratand design system: tokens and React components shared by the chandra
 
 Requires a shadcn project (`components.json`, Tailwind CSS v4).
 
-1. Add the theme. The shadcn CLI merges the tokens into your `globals.css` (`:root`, `.dark`, `@theme inline` and reduced-motion rules):
+1. Add the Tokens. The shadcn CLI merges the tokens into your `globals.css` (`:root`, `.dark`, `@theme inline` and reduced-motion rules):
 
    ```bash
    npx shadcn@latest add chandratand/ui/tokens
@@ -23,7 +23,7 @@ Requires a shadcn project (`components.json`, Tailwind CSS v4).
 
    The registry is this public GitHub repo (root `registry.json`); no hosting or `components.json` entry is needed.
 
-3. Theming is the app's job: put `.dark` on `<html>` for dark mode (e.g. `next-themes` with `attribute="class"`) Load your fonts and set `--font-sans` / `--font-mono` on `html`.
+3. Theming is the app's job: put `.dark` on `<html>` for dark mode (e.g. `next-themes` with `attribute="class"`). Load your fonts and set `--font-sans` / `--font-mono` on `html`.
 
 Never edit chandratand/ui components inside an app. Fix them here, then pull again with `npx shadcn add … --overwrite`. [`CHANGELOG.md`](CHANGELOG.md) says what changed and when a re-pull needs changes on your side (**Breaking**).
 

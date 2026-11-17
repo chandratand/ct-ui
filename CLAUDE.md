@@ -37,7 +37,7 @@ Shared tokens + React components for every chandratand project (portfolio, SaaS)
     - Import it via `@/registry/...` (e.g. `import { Button } from "@/registry/chandratand/ui/button"`). The CLI rewrites `@/registry` to the consumer's alias on install; `@/components/...` and relative paths break.
     - List it in `registryDependencies` as `chandratand/ui/<name>`. A bare `"button"` resolves to **shadcn's** Button. Bare `"utils"` is intentional (shadcn's `cn`, imported as `@/lib/utils`).
 12. **Fix chandratand/ui components here**, then re-pull into apps with `npx shadcn add … --overwrite`. Consuming apps never edit them.
-13. **Every component change is done when** it's in `registry.json`, has its own docs page (for now its section on `app/page.tsx`) checked in light + dark, `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass, and a Changelog entry is written (design-system doc §7.5).
+13. **Every change to a registry item (tokens or a component) is done when** it's in `registry.json`, has its own docs page (for now its section on `app/page.tsx`) checked in light + dark, `pnpm lint`, `pnpm build`, `pnpm registry:build` all pass, and a Changelog entry is written (design-system doc §7.5).
 
 ## Commands
 

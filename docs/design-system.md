@@ -252,7 +252,7 @@ When a new token is added, check its contrast in **light and dark** and note the
    - [ ] Other chandratand/ui components imported from `@/registry/...`; no `next/*`, no `next-themes`
    - [ ] Doc comment: when to use it; inline comments only for a non-obvious why
 3. Add the item to `registry.json` (`dependencies`, `registryDependencies` with `utils` and any `chandratand/ui/<name>`).
-4. Show it on `app/page.tsx` (check light and dark with the theme toggle).
+4. Show it on its docs page, for now its section on `app/page.tsx` (check light and dark with the Mode toggle).
 5. Run `pnpm lint`, `pnpm build`, `pnpm registry:build`.
 6. Write a `CHANGELOG.md` entry (7.5).
 7. Delete `components/`.
